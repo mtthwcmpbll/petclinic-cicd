@@ -22,7 +22,7 @@ spec:
     - sleep
     env:
       - name: KUBECONFIG
-        value: "/tmp/config/kpack-deploy-sa"    
+        value: "/tmp/config/kubeconfig"
     volumeMounts:
     - name: secret-volume
       readOnly: true
