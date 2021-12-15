@@ -93,8 +93,8 @@ spec:
                         git diff-index --quiet HEAD || git commit -m "update by ci"
                         # mkdir -p ~/.ssh
                         # ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-                        git pull -r origin main
-                        git push --set-upstream origin main
+                        git pull -r origin minikube-a01
+                        git push --set-upstream origin minikube-a01
                         '''
                     //}
                 }  
