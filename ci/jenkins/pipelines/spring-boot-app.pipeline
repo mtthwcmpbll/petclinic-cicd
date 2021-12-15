@@ -80,7 +80,7 @@ spec:
                             url: "https://github.com/mtthwcmpbll/spring-petclinic-gitops.git"
                         )
                     }
-                    sshagent(['git']) {   
+                    //sshagent(['git']) {
                         sh '''#!/bin/sh -e
                         
                         kubectl get image ${APP_NAME} -o json | jq -r .status.latestImage >> containerversion.txt
@@ -96,7 +96,7 @@ spec:
                         git pull -r origin main
                         git push --set-upstream origin main
                         '''
-                    }
+                    //}
                 }  
             }
         }
