@@ -17,7 +17,7 @@ spec:
        secretName: jenkins-sa
   containers:
   - name: k8s
-    image: reg.ellin.net/library/docker-build
+    image: 291086536081.dkr.ecr.us-east-1.amazonaws.com/pet_clinic-docker-build:latest
     command:
     - sleep
     env:
@@ -47,7 +47,7 @@ spec:
                         changelog: true,
                         branch: "main",
                         credentialsId: "git",
-                        url: "git@github.com:jeffellin/${APP_NAME}.git"
+                        url: "git@github.com:mtthwcmpbll/${APP_NAME}.git"
                     )
                     sh 'git rev-parse HEAD > git-commit.txt'
                 }
@@ -60,8 +60,8 @@ spec:
                     sh '''#!/bin/sh -e
                         export GIT_COMMIT=$(cat app/git-commit.txt)
                         kp image save ${APP_NAME} \
-                            --git git@github.com:jeffellin/${APP_NAME}.git \
-                            -t reg.ellin.net/dev/${APP_NAME} \
+                            --git git@github.com:mtthwcmpbll/${APP_NAME}.git \
+                            -t 291086536081.dkr.ecr.us-east-1.amazonaws.com/${APP_NAME} \
                             --env BP_GRADLE_BUILD_ARGUMENTS='--no-daemon build' \
                             --git-revision ${GIT_COMMIT} -w
                     '''
