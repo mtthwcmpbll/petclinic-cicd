@@ -60,7 +60,7 @@ spec:
                         export GIT_COMMIT=$(cat app/git-commit.txt)
                         kp image save ${APP_NAME} \
                             --git https://github.com/jeffellin/${APP_NAME}.git \
-                            -t reg.ellin.net/dev/${APP_NAME} \
+                            -t registry.minikube.a01.123elm.net/spring-petclinic/${APP_NAME} \
                             --env BP_GRADLE_BUILD_ARGUMENTS='--no-daemon build' \
                             --git-revision ${GIT_COMMIT} -w
                     '''
