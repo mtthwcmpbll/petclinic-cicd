@@ -47,7 +47,7 @@ spec:
                         changelog: true,
                         branch: "main",
                         credentialsId: "git",
-                        url: "git@github.com:mtthwcmpbll/${APP_NAME}.git"
+                        url: "https://github.com/mtthwcmpbll/${APP_NAME}.git"
                     )
                     sh 'git rev-parse HEAD > git-commit.txt'
                 }
@@ -60,7 +60,7 @@ spec:
                     sh '''#!/bin/sh -e
                         export GIT_COMMIT=$(cat app/git-commit.txt)
                         kp image save ${APP_NAME} \
-                            --git git@github.com:mtthwcmpbll/${APP_NAME}.git \
+                            --git https://github.com/mtthwcmpbll/${APP_NAME}.git \
                             -t 291086536081.dkr.ecr.us-east-1.amazonaws.com/${APP_NAME} \
                             --env BP_GRADLE_BUILD_ARGUMENTS='--no-daemon build' \
                             --git-revision ${GIT_COMMIT} -w
@@ -76,9 +76,9 @@ spec:
                         git(
                             poll: false,
                             changelog: false,
-                            branch: "master",
+                            branch: "main",
                             credentialsId: "git",
-                            url: "git@github.com:jeffellin/spring-petclinic-gitops.git"
+                            url: "https://github.com/mtthwcmpbll/spring-petclinic-gitops.git"
                         )
                     }
                     sshagent(['git']) {   
