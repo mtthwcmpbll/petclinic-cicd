@@ -20,7 +20,7 @@ RUN chmod a+x /usr/local/bin/kp
 RUN curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 RUN mv kustomize /usr/local/bin
 
-ADD ca.crt  /usr/local/share/ca-certificates
+# ADD ca.crt  /usr/local/share/ca-certificates
 RUN update-ca-certificates
 WORKDIR /config
 

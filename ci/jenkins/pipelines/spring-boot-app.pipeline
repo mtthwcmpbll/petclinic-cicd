@@ -17,7 +17,7 @@ spec:
        secretName: jenkins-sa
   containers:
   - name: k8s
-    image: reg.ellin.net/library/docker-build
+    image: registry.minikube.a01.123elm.net/shared/jeffellin/docker-build
     command:
     - sleep
     env:
@@ -46,8 +46,7 @@ spec:
                         poll: true,
                         changelog: true,
                         branch: "main",
-                        credentialsId: "git",
-                        url: "git@github.com:jeffellin/${APP_NAME}.git"
+                        url: "https://github.com/jeffellin/${APP_NAME}.git"
                     )
                     sh 'git rev-parse HEAD > git-commit.txt'
                 }
@@ -60,7 +59,7 @@ spec:
                     sh '''#!/bin/sh -e
                         export GIT_COMMIT=$(cat app/git-commit.txt)
                         kp image save ${APP_NAME} \
-                            --git git@github.com:jeffellin/${APP_NAME}.git \
+                            --git https://github.com/jeffellin/${APP_NAME}.git \
                             -t reg.ellin.net/dev/${APP_NAME} \
                             --env BP_GRADLE_BUILD_ARGUMENTS='--no-daemon build' \
                             --git-revision ${GIT_COMMIT} -w
@@ -76,9 +75,9 @@ spec:
                         git(
                             poll: false,
                             changelog: false,
-                            branch: "master",
+                            branch: "minikube-a01",
                             credentialsId: "git",
-                            url: "git@github.com:jeffellin/spring-petclinic-gitops.git"
+                            url: "https://github.com/mtthwcmpbll/spring-petclinic-gitops.git"
                         )
                     }
                     sshagent(['git']) {   
